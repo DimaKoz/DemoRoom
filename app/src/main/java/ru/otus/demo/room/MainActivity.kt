@@ -22,9 +22,20 @@ class MainActivity : AppCompatActivity() {
         val task = Runnable {
             val result = Db.getInstance(this)?.getPublisherDao()?.getAll()
             Log.d(TAG, "result:$result")
-            mUiHandler.post {
-                Log.d(TAG, "result:$result")
+
+            result?.let  {
+                if(result.isNotEmpty()) {
+                    val old = result[0]
+                    val new =  ListData.publishers[1]
+                    Db.getInstance(this)?.getPublisherDao()?.insertAndDeleteInTransaction(new, old)
+                }
             }
+
+            val secondResult = Db.getInstance(this)?.getPublisherDao()?.getAll()
+            mUiHandler.post {
+                Log.d(TAG, "secondResult:$secondResult")
+            }
+
         }
         Executors.newSingleThreadScheduledExecutor().schedule(task, 2000, TimeUnit.MILLISECONDS)
 

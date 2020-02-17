@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0de17673c240546aead32ebb98fb804e",
+    "identityHash": "0533ed3c95e2c2185621cb714fcf77f9",
     "entities": [
       {
         "tableName": "Publisher",
@@ -33,14 +33,31 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_Publisher_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Publisher_name` ON `${TABLE_NAME}` (`name`)"
+          },
+          {
+            "name": "index_Publisher_annual_revenue",
+            "unique": false,
+            "columnNames": [
+              "annual_revenue"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Publisher_annual_revenue` ON `${TABLE_NAME}` (`annual_revenue`)"
+          }
+        ],
         "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0de17673c240546aead32ebb98fb804e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0533ed3c95e2c2185621cb714fcf77f9')"
     ]
   }
 }
