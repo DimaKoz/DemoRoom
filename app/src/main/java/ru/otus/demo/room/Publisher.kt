@@ -18,12 +18,15 @@ data class Publisher(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 
+    @ColumnInfo(name = "description")
+    var description: String  = ""
 
     override fun toString(): String {
         return "Publisher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", annualRevenue=" + annualRevenue +
+                ", annualRevenue=" + annualRevenue + '\'' +
+                ", description='" + description + '\''+
                 '}'
     }
 }

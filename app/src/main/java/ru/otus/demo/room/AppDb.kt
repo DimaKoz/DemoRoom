@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 const val TAG = "AppDb"
 
-@Database(entities = arrayOf(Publisher::class), version = 1)
+@Database(entities = arrayOf(Publisher::class), version = 2)
 abstract class AppDb : RoomDatabase() {
     abstract fun getPublisherDao(): PublisherDao
 
