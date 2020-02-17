@@ -16,6 +16,8 @@ object Db {
                     AppDb::class.java, "db-name.db"
                 )
                     /*.allowMainThreadQueries()*/
+                    .fallbackToDestructiveMigration()
+                    .addMigrations(MIGRATION_1_2)
                     .addCallback(DbCallback(context))
                     .build()
             }
